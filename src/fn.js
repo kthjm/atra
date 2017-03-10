@@ -11,7 +11,7 @@ export function cq(e){
 
     if(!clone) return false;
 
-    rcs.forEach((rc,cause)=>{
+    rcs.forEach(rc=>{
 
         if(!rc.fulfill(e)) return false;
 
@@ -36,8 +36,7 @@ export function cq(e){
 
                 return command.business(...arg);
 
-            })
-            ([
+            })([
                 e,
                 q(command.query,clone),
                 s(command.query,clone),
@@ -48,7 +47,7 @@ export function cq(e){
 
     });
 
-};
+}
 
 const q = (query,clone) => (obj=>{
 
@@ -62,7 +61,7 @@ const s = (query,clone) => function(key,val){
 
     if(!query.filter(qr=>qr==key).length){
 
-        console.log(`this business can't touch ${key}. registered is ${query}`);
+        console.error(`this business can't touch ${key}. registered is ${query}`);
 
         return false;
 

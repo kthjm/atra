@@ -1,14 +1,17 @@
 {
   "name": "brux",
   "version": "0.0.1",
-  "description": "",
+  "description": "all commands in browser sucked into \"brother\"(bigrouter).",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "babel": "babel"
+    "babel": "babel src --out-dir dist",
+    "eslint": "eslint --fix dist",
+    "blint": "run-s babel eslint"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "kthjm <toxictoxer@gmail.com>",
+  "homepage": "https://github.com/kthjm/brux",
+  "license": "MIT",
   "dependencies": {
     "collections": "^5.0.6",
     "eventemitter2": "^3.0.2",
@@ -16,7 +19,10 @@
   },
   "devDependencies": {
     "babel-cli": "^6.23.0",
+    "babel-eslint": "^7.1.1",
     "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-preset-es2015": "^6.22.0"
+    "babel-preset-es2015": "^6.22.0",
+    "eslint": "^3.17.1",
+    "npm-run-all": "^4.0.2"
   }
 }

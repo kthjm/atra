@@ -48,6 +48,8 @@ export const rc_fulfills = {
 
     _other(e){
 
+        if(e.currentTarget) return false;
+
         // if(e.currentTarget === window) return false;
 
         return true;
@@ -58,19 +60,19 @@ export const rc_fulfills = {
 
 export function CommandFulfill(e,clone){
 
-   let condition = this.condition;
+    let condition = this.condition;
 
-   if(e.type !== condition.type) return false;
+    if(e.type !== condition.type) return false;
 
-   if("prevent" in condition){
+    if("prevent" in condition){
 
-       if(condition.prevent(e,Object.assign({},clone.toObject()))) return false;
+        if(condition.prevent(e,Object.assign({},clone.toObject()))) return false;
 
-   }
+    }
 
-   if(this.fulfill_typical(e,condition)) return true;
+    if(this.fulfill_typical(e,condition)) return true;
 
-};
+}
 
 export const command_fulfills = {
 
