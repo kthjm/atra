@@ -13,7 +13,7 @@ export function cq(e){
 
     rcs.forEach(rc=>{
 
-        if(!rc.fulfill(e)) return false;
+        if(!rc.commands.length || !rc.fulfill(e)) return false;
 
         rc.commands.forEach(command=>{
 
