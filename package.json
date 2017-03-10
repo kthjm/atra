@@ -1,6 +1,6 @@
 {
   "name": "brux",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "all commands in browser sucked into \"brother\"(bigrouter).",
   "main": "index.js",
   "scripts": {

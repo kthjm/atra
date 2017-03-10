@@ -1,4 +1,4 @@
-import EventEmitter from "EventEmitter2";
+import EventEmitter from "eventemitter2";
 import {Map,set_rcs,cq} from "./fn";
 
 const brux = Object.assign({},EventEmitter.prototype,{
