@@ -7,7 +7,7 @@ export const set_rcs = rcs => new Map(rcs.map(rc => [rc.cause,new RcCtrs[rc.caus
 
 export function cq(e){
 
-    let {rcs,clone,end} = this;
+    let {rcs,clone,send} = this;
 
     if(!clone) return false;
 
@@ -40,7 +40,7 @@ export function cq(e){
                 e,
                 q(command.query,clone),
                 s(command.query,clone),
-                end.bind(this)
+                send
             ]);
 
         });

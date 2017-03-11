@@ -5,11 +5,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "up": "node ./script/version_up",
+    "versionup": "node ./script/version_up",
     "babel": "babel src --out-dir dist",
-    "eslint": "eslint --fix dist",
-    "prepublish": "run-s up babel eslint",
-    "git": "git add .|| git commit -F ./cm.txt"
+    "postbabel": "eslint --fix dist",
+    "up": "run-s versionup babel",
+    "add": "git add .",
+    "commit": "git commit -F ./cm.txt",
+    "postpublish": "run-s add commit"
   },
   "author": "kthjm <toxictoxer@gmail.com>",
   "homepage": "https://github.com/kthjm/brux",

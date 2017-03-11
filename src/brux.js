@@ -43,6 +43,12 @@ const brux = Object.assign({},EventEmitter.prototype,{
 
             this.cq = cq.bind(this);
 
+            ["init","send","fin"].forEach(method=>{
+
+                this[method] = this[method].bind(this);
+
+            });
+
         }
 
         init(state){
@@ -51,7 +57,7 @@ const brux = Object.assign({},EventEmitter.prototype,{
 
         }
 
-        end(){
+        send(){
 
             brux.snatchemit(this.clone.toObject());
 
