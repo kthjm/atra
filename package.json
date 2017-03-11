@@ -1,13 +1,15 @@
 {
   "name": "brux",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "all commands in browser sucked into \"brother\"(bigrouter).",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "up": "node ./script/version_up",
     "babel": "babel src --out-dir dist",
     "eslint": "eslint --fix dist",
-    "blint": "run-s babel eslint"
+    "prepublish": "run-s up babel eslint",
+    "git": "git add .|| git commit -F ./cm.txt"
   },
   "author": "kthjm <toxictoxer@gmail.com>",
   "homepage": "https://github.com/kthjm/brux",
