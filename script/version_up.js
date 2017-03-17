@@ -1,39 +1,72 @@
 const fs = require("fs");
 const path = require("path");
-const packagejson = path.resolve(process.cwd(),"package.json");
-const message_for_commit = "./cm.txt";
 
-fs.readFile(packagejson,(err,data)=>{
+const [package_json,message_for_commit] = ["package.json","cm.txt"].map(file=>path.resolve(process.cwd(),file));
 
-    if(err) console.error(err);
+(pj=>fs.writeFileSync(
 
-    fs.writeFileSync(
+    package_json,
 
-        packagejson,
+    (new_ver=>{
 
-        (jsn=>{
+        console.log(`${pj.version} => ${new_ver}`);
 
-            let newversion = (
-                jsn.version.split(".")
-                .map((v,i,a)=>{
-                    if(i == a.length-1) return String(Number(v)+1);
-                    else return v;
-                }).join(".")
-            );
+        pj.version = new_ver;
 
-            console.log(`${jsn.version} => ${newversion}`);
+        fs.writeFileSync(message_for_commit,new_ver);
 
-            jsn.version = newversion;
+        return JSON.stringify(pj,null,"  ");
 
-            fs.writeFileSync(message_for_commit,newversion);
+    })(
+        pj.version.split(".")
+        .map((v,i,a)=>{
+            if(i == a.length-1) return String(Number(v)+1);
+            else return v;
+        }).join(".")
+    )
 
-            return JSON.stringify(jsn,null,"  ");
+))(
 
-        })(JSON.parse(data.toString()))
+    require(package_json)
 
-    );
+);
 
-});
+
+
+
+
+
+// fs.readFile(package_json,(err,data)=>{
+//
+//     if(err) console.error(err);
+//
+//     fs.writeFileSync(
+//
+//         package_json,
+//
+//         (jsn=>{
+//
+//             let new_ver = (
+//                 jsn.version.split(".")
+//                 .map((v,i,a)=>{
+//                     if(i == a.length-1) return String(Number(v)+1);
+//                     else return v;
+//                 }).join(".")
+//             );
+//
+//             console.log(`${jsn.version} => ${new_ver}`);
+//
+//             jsn.version = new_ver;
+//
+//             fs.writeFileSync(message_for_commit,new_ver);
+//
+//             return JSON.stringify(jsn,null,"  ");
+//
+//         })(JSON.parse(data.toString()))
+//
+//     );
+//
+// });
 
 
 

@@ -54,11 +54,17 @@ export const rc_fulfills = {
 
         return true;
 
+    },
+
+    _worker(e){
+
+        if(e.currentTarget.constructor === window.Worker) return true;
+
     }
 
 };
 
-export function CommandFulfill(e,clone){
+export function command_fulfill(e,clone){
 
     let condition = this.condition;
 
@@ -110,6 +116,12 @@ export const command_fulfills = {
 
     },
 
-    _other(e,condition){return false;}
+    _other(e,condition){return false;},
+
+    _worker(e,condition){
+
+        // ここ
+
+    }
 
 };

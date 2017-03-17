@@ -1,17 +1,19 @@
 {
   "name": "brux",
-  "version": "0.0.4",
-  "description": "all commands in browser sucked into \"brother\"(bigrouter).",
+  "version": "0.0.5",
+  "description": "all commands in browser Inhaled into \"brother\".",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "versionup": "node ./script/version_up",
+    "vup": "node ./script/version_up",
     "babel": "babel src --out-dir dist",
-    "postbabel": "eslint --fix dist",
-    "up": "run-s versionup babel",
+    "eslint": "eslint --fix dist",
+    "prepublish": "run-s babel eslint",
     "add": "git add .",
     "commit": "git commit -F ./cm.txt",
-    "postpublish": "run-s add commit"
+    "push": "git push origin master",
+    "postpublish": "run-s add commit push",
+    "gif": "node ./script/gif"
   },
   "author": "kthjm <toxictoxer@gmail.com>",
   "homepage": "https://github.com/kthjm/brux",
@@ -25,7 +27,9 @@
     "babel-cli": "^6.23.0",
     "babel-eslint": "^7.1.1",
     "babel-plugin-add-module-exports": "^0.2.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.22.0",
+    "babel-runtime": "^6.23.0",
     "eslint": "^3.17.1",
     "npm-run-all": "^4.0.2"
   }

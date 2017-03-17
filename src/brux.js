@@ -1,5 +1,6 @@
 import EventEmitter from "eventemitter2";
-import {Map,set_rcs,cq} from "./fn";
+import set_rcs from "./setrcs";
+import cq from "./cq";
 
 const brux = Object.assign({},EventEmitter.prototype,{
 
@@ -80,3 +81,15 @@ const brux = Object.assign({},EventEmitter.prototype,{
 });
 
 export default brux;
+
+
+
+
+
+
+
+
+
+
+// import {Map,set_rcs,cq} from "./fn";
+// import Map from "collections/map";
