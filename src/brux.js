@@ -7,31 +7,35 @@ const brux = Object.assign({},EventEmitter.prototype,{
     feed : {},
 
     snatchemit(clone){
-
         this.feed = null;
-
         this.feed = clone;
-
         this.emit("snatch");
+    },
 
+    syncemit(clone){
+        this.feed = null;
+        this.feed = clone;
+        this.emit("sync");
     },
 
     on_snatch(demand){
-
         this.on("snatch",demand);
-
     },
 
     off_snatch(demand){
-
         this.removeListener("snatch",demand);
+    },
 
+    on_sync(synced){
+        this.on("sync",synced);
+    },
+
+    off_sync(synced){
+        this.removeListener("sync",synced);
     },
 
     supply(){
-
         return this.feed;
-
     },
 
 /*--------------------------------------------------------------*/
@@ -44,7 +48,7 @@ const brux = Object.assign({},EventEmitter.prototype,{
 
             this.cq = cq.bind(this);
 
-            ["init","send","fin"].forEach(method=>{
+            ["init","send","sync","fin"].forEach(method=>{
 
                 this[method] = this[method].bind(this);
 
@@ -61,6 +65,12 @@ const brux = Object.assign({},EventEmitter.prototype,{
         send(){
 
             brux.snatchemit(this.clone.toObject());
+
+        }
+
+        sync(){
+
+            brux.syncemit(this.clone.toObject());
 
         }
 

@@ -1,6 +1,6 @@
 {
   "name": "brux",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "all commands in browser Inhaled into \"brother\".",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,10 @@
     "gif": "node ./script/gif"
   },
   "author": "kthjm <toxictoxer@gmail.com>",
-  "homepage": "https://github.com/kthjm/brux",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kthjm/brux"
+  },
   "license": "MIT",
   "dependencies": {
     "collections": "^5.0.6",

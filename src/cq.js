@@ -1,6 +1,6 @@
 export default function(e){
 
-    let {rcs,clone,send} = this;
+    let {rcs,clone,send,sync} = this;
 
     if(!clone) return false;
 
@@ -29,7 +29,8 @@ export default function(e){
                 e,
                 q(command.query,clone),
                 s(command.query,clone),
-                send
+                send,
+                sync
             ]);
 
         });

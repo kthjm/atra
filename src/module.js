@@ -84,9 +84,19 @@ export const command_fulfills = {
 
     _dom(e,condition){
 
-        if("id" in condition && condition.id !== e.target.id) return false;
+        // if("id" in condition && condition.id !== e.target.id) return false;
+        //
+        // if("className" in condition && e.target.getAttribute("class").indexOf(condition.className) == -1) return false;
 
-        if("className" in condition && e.target.getAttribute("class").indexOf(condition.className) == -1) return false;
+        if ("id" in condition && condition.id !== e.currentTarget.id) return false;
+
+        if("className" in condition){
+
+            if(!e.currentTarget.hasAttribute("class")) return false;
+
+            if(e.currentTarget.getAttribute("class").indexOf(condition.className) == -1) return false;
+
+        }
 
         return true;
 
