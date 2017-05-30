@@ -7,7 +7,10 @@ animationや{passive:true}など、Root以外にもstatefulなComponentを使う
 ```Root.js
 //stateful
 import {Argus,onRecieve,offRecieve,supply} from "argux";
-const {name,init,fin} = new Argus({...});
+const {name,init,fin} = new Argus({
+  name:name,
+  causes:[{...},{...},{...}]
+});
 ```
 と
 
