@@ -26,14 +26,14 @@ export default {
         }
     },
 
-    needNotArgBecauseNotFunction:{
-        config:{
-            position:"relative",
-            background:"#483758"
-        },
-        arg:true,
-        out:`"needNotArgBecauseNotFunction" is not function. so need not arg.`
-    },
+    // needNotArgBecauseNotFunction:{
+    //     config:{
+    //         position:"relative",
+    //         background:"#483758"
+    //     },
+    //     arg:true,
+    //     out:`"needNotArgBecauseNotFunction" is not function. so need not arg.`
+    // },
 
     notFindInConfig:{
         config:undefined,

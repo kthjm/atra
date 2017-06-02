@@ -5,7 +5,7 @@ export default (config: any) => ((name: string,arg: any) => (alloc.call(config,n
 const atraError = (name,cfg,arg) => (
 
     (!cfg) ? `couldn't find "${name}" in config. set "${name}".`
-    :(typeof cfg == "object" && arg) ? `"${name}" is not function. so need not arg.`
+    // :(typeof cfg == "object" && arg) ? `"${name}" is not function. so need not arg.`
     :false
 
 );
