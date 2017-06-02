@@ -1,6 +1,6 @@
 {
   "name": "atra",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -9,13 +9,13 @@
     "babel": "babel src --out-dir dist",
     "lint": "eslint --fix dist",
     "compile": "run-s mocha flow babel lint",
-    "prepublish": "compile",
+    "prepublish": "npm run compile",
     "versionUp": "node ./script/version_up",
     "add": "git add .",
-    "commit": "git commit -F ./cm.txt",
+    "commit": "git commit -F ./commitMessage.txt",
     "push": "git push origin master",
     "github": "run-s add commit push",
-    "postpublish": "github"
+    "postpublish": "npm run github"
   },
   "author": "kthjm <toxictoxer@gmail.com>",
   "repository": {
