@@ -1,22 +1,21 @@
-#### 思い立ったときの感じを書いておいて行き詰まった時に誤魔化したい.md
+#### 思い立ったときの感じを書いておいて行き詰まった時にアレしたい.md
 
 [brux](https://github.com/kthjm/brux)の融通の利かなさとかに限界が訪れ始め、くわえて変数名に乗れない感じなのでargux
 
 animationや{passive:true}など、Root以外にもstatefulなComponentを使う場合があることを知ったので、というかrenderingに伴うReactEventがRootだけなの厳しいので、各statefulがそれぞれインスタンスを持って自律的に振る舞えるようにしたい。今の自分のstatefulは完全に親からのpropsのみに依存する無脳Componentで、形式上はstatefulだけどstateを使わないのでstatefulじゃない。lifecycleをちょろっと使うだけ。なので、どうせなら自分のstateを持って自律的にrenderしてもいいじゃないかという。feedとか。
 
-```Root.js
+```js:Root.js
 //stateful
-import {Argus,onRecieve,offRecieve,supply} from "argux";
+import {Argus,on,off,supply} from "argux";
 const {name,init,fin} = new Argus({
   name:name,
   causes:[{...},{...},{...}]
 });
 ```
-と
 
-```Stateless.js
+```js:Stateless.js
 //stateless
-import {Atra} from "causux";
+import {Atra} from "argux";
 const a = new Atra({...});
 ```
 

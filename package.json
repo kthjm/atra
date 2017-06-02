@@ -1,24 +1,25 @@
 {
-  "name": "brux",
-  "version": "0.0.6",
-  "description": "all commands in browser Inhaled into \"brother\".",
+  "name": "orph",
+  "version": "0.0.1",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "vup": "node ./script/version_up",
     "babel": "babel src --out-dir dist",
-    "eslint": "eslint --fix dist",
-    "prepublish": "run-s babel eslint",
+    "lint": "eslint --fix dist",
+    "prepublish": "run-s babel lint",
     "add": "git add .",
     "commit": "git commit -F ./cm.txt",
     "push": "git push origin master",
     "postpublish": "run-s add commit push",
-    "gif": "node ./script/gif"
+    "gif": "node ./script/gif",
+    "flow": "flow",
+    "mocha": "mocha"
   },
   "author": "kthjm <toxictoxer@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kthjm/brux"
+    "url": "https://github.com/kthjm/orph"
   },
   "license": "MIT",
   "dependencies": {
@@ -32,8 +33,22 @@
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-transform-runtime": "^6.23.0",
     "babel-preset-es2015": "^6.22.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-power-assert": "^1.0.0",
+    "babel-register": "^6.24.1",
     "babel-runtime": "^6.23.0",
+    "chai": "^4.0.1",
+    "enzyme": "^2.8.2",
     "eslint": "^3.17.1",
-    "npm-run-all": "^4.0.2"
+    "eslint-plugin-flowtype": "^2.33.0",
+    "eslint-plugin-react": "^7.0.1",
+    "flow-bin": "^0.47.0",
+    "mocha": "^3.4.2",
+    "npm-run-all": "^4.0.2",
+    "power-assert": "^1.4.2",
+    "react": "^15.5.4",
+    "react-addons-test-utils": "^15.5.1",
+    "react-dom": "^15.5.4",
+    "react-test-renderer": "^15.5.4"
   }
 }
