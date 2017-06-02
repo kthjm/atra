@@ -1,32 +1,29 @@
 {
-  "name": "orph",
-  "version": "0.0.1",
+  "name": "atra",
+  "version": "0.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "vup": "node ./script/version_up",
+    "mocha": "mocha",
+    "flow": "flow",
     "babel": "babel src --out-dir dist",
     "lint": "eslint --fix dist",
-    "prepublish": "run-s babel lint",
+    "compile": "run-s mocha flow babel lint",
+    "prepublish": "compile",
+    "versionUp": "node ./script/version_up",
     "add": "git add .",
     "commit": "git commit -F ./cm.txt",
     "push": "git push origin master",
-    "postpublish": "run-s add commit push",
-    "gif": "node ./script/gif",
-    "flow": "flow",
-    "mocha": "mocha"
+    "github": "run-s add commit push",
+    "postpublish": "github"
   },
   "author": "kthjm <toxictoxer@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kthjm/orph"
+    "url": "https://github.com/kthjm/atra"
   },
   "license": "MIT",
-  "dependencies": {
-    "collections": "^5.0.6",
-    "eventemitter2": "^3.0.2",
-    "path-to-regexp": "^1.7.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "babel-cli": "^6.23.0",
     "babel-eslint": "^7.1.1",
@@ -37,18 +34,12 @@
     "babel-preset-power-assert": "^1.0.0",
     "babel-register": "^6.24.1",
     "babel-runtime": "^6.23.0",
-    "chai": "^4.0.1",
-    "enzyme": "^2.8.2",
     "eslint": "^3.17.1",
     "eslint-plugin-flowtype": "^2.33.0",
-    "eslint-plugin-react": "^7.0.1",
     "flow-bin": "^0.47.0",
+    "fs-extra": "^3.0.1",
     "mocha": "^3.4.2",
     "npm-run-all": "^4.0.2",
-    "power-assert": "^1.4.2",
-    "react": "^15.5.4",
-    "react-addons-test-utils": "^15.5.1",
-    "react-dom": "^15.5.4",
-    "react-test-renderer": "^15.5.4"
+    "power-assert": "^1.4.2"
   }
 }
