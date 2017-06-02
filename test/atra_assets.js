@@ -75,6 +75,20 @@ export default {
                 position:"absolute"
             }
         }
-    }
+    },
+
+    argIssingleFunction:((fn)=>({
+        config:(fn)=>({
+            onClick:fn,
+            style:{}
+        }),
+        arg:fn,
+        out:{
+            onClick:fn,
+            style:{}
+        }
+    }))(
+        (e)=>(console.log(e))
+    )
 
 };

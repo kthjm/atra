@@ -23,6 +23,7 @@ function alloc(name,arg){
 
     case "boolean":return retort(cfg);
 
+    case "function":
     case "string":
     case "number":return retort(cfg,arg);
 
