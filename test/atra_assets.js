@@ -41,6 +41,26 @@ export default {
         out:`couldn't find "notFindInConfig" in config. set "notFindInConfig".`
     },
 
+    AttrByObject:{
+        config:{
+            href:`chooslr.com`,
+            target:`_blank`,
+            style:{
+                textDecoration:"none",
+                color:"inherit"
+            }
+        },
+        arg:true,
+        out:{
+            href:`chooslr.com`,
+            target:`_blank`,
+            style:{
+                textDecoration:"none",
+                color:"inherit"
+            }
+        }
+    },
+
     AttrByFunction:{
         config:({href,target})=>({
             href:href,

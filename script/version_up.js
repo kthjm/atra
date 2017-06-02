@@ -22,7 +22,7 @@ const packageVersionUp = async (packageJSON) => {
 
     console.log(`${name} will be update. ${version} => ${newVersion}`);
     packageJSON.version = newVersion;
-    let packageJSONString = JSON.stringify(packageJSON,null,"  ");
+    let packageJSONString = JSON.stringify(packageJSON,null,"    ");
     await fs.writeFile(messageForCommitPath,newVersion);
     return fs.writeFile(packageJSONPath,packageJSONString);
 

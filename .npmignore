@@ -1,7 +1,9 @@
 node_modules/
 src/
 script/
-cm.txt
+test/
+commitMessage.txt
 .babelrc
 .eslintrc
+.flowconfig
 .gitignore
