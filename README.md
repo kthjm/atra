@@ -1,8 +1,8 @@
 ## atra
 
-##### atra works for attributes in JSX.
+**atra works for attributes in JSX.**
 
-```js:Component.js
+```javascript
 import React from "react";
 import Atra from "atra";
 
