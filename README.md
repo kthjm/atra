@@ -1,8 +1,10 @@
-## atra
+# atra
+[![Build Status](https://travis-ci.org/kthjm/atra.svg?branch=master)](https://travis-ci.org/kthjm/atra)
+[![Coverage Status](https://coveralls.io/repos/github/kthjm/atra/badge.svg?branch=master)](https://coveralls.io/github/kthjm/atra?branch=master)
 
-##### atra works for attributes in JSX.
+**atra works for attributes in JSX.**
 
-```js:Component.js
+```javascript
 import React from "react";
 import Atra from "atra";
 
