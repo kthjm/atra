@@ -1,4 +1,5 @@
 ## atra
+[![Build Status](https://travis-ci.org/kthjm/atra.svg?branch=master)](https://travis-ci.org/kthjm/atra)
 
 **atra works for attributes in JSX.**
 
