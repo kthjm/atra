@@ -5,7 +5,11 @@ after_success:
     - npm run coverage
 deploy:
     provider: npm
-    api_key: "72c8a1db-6150-4b3b-8a95-13588c6f87f6"
+    api_key: "cE2U0IqvNVOwfSqwTgO9hgIsV6cIQ73XzyNibLuVZEbLXuD/XK7WkJyzc5ySwHxmoOxZ+KbxiarBxEgqWDTmFE8CRq0ynTtGI5wt5hLkhWFhFmvj19XAN/crUe16Na61X0
+Nw+0ZdQBppVQmRuLele5Q5t1pH8VUGpB0vWvu0ARA2Atzd10RB+ctP0o7qZH87Jb4ic75QH/Ba4bf7nD8hdjfGX5jQhNWTWrOX/b3Lf0pdsOfPHbsA7V2vqxW9UNv152LT8CZ20Z1G3+9
+O0A/E4X8F1eewc+Ift4lR3wudnjPMxbWnf63L+9Gelq/DqIjYHDK0GyZlHAh2O0iFuoAFNRgeb7523kIGWa5nguA9+ZY8hZZQQ+rxotUCCBMSmQaNajtQCVmvOeSHJ9jOCXuHezawMohO
+oLE+zDzZzw9H00ILQ82igwvlithV2AACI90MEAhVEt4aT9NG2w4Yf0Vh0Yf2Bl9GNIiiELkVMUkMOrseTd5959fUUBIonlg5aNuV4HpzcO4aTnU1p6+Gu2kgscMNRi/oHKvDFevublCji
+JwFSaesoFhkVPLLNsPp0Uo/28j0MLb06OVJp0fITZcXYMSPI4E/9iGclJcxd4J5vfUtXOecNByuMbZM1pU3CoB9nWNrgBie3EsOcXyUPn3Ropk7Vxcv4QIzVObvDc6YzRA="
     skip_cleanup: true
     on:
         branch: master
