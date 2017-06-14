@@ -1,6 +1,10 @@
 // @flow
 
-export default (config: any) => ((name: string,arg: any) => (alloc.call(config,name,arg)))
+export default (config: any) => (
+
+    (name: string,arg: any): any => (alloc.call(config,name,arg))
+
+)
 
 const atraError = (name,cfg,arg) => (
 

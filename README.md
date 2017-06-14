@@ -18,7 +18,10 @@ props = {
     a: {
         href: "hoge.com",
         target: "_blank",
-        children: "hoge"
+        children: "hoge",
+        style: {
+            color: "#495834"
+        }
     }
 };
 */
@@ -37,13 +40,13 @@ const atra = Atra({
     span: (background)=>({
         background: background
     }),
-    a: ({href,target,children})=>({
+    a: ({href,target,children,style:{color}})=>({
         href: href,
         target: target,
         children: children,
         style: {
             textDecoration: "none",
-            color: "inherit"
+            color: color
         }
     })
 });
