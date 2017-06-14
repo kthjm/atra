@@ -6,18 +6,11 @@
     "scripts": {
         "test": "cross-env NODE_ENV=test nyc mocha test/atra.js",
         "coverage": "nyc report --reporter=text-lcov | coveralls",
-        "mocha": "mocha",
-        "flow": "flow",
+        "testwatch": "mocha -w",
+        "flow": "flow status",
         "babel": "babel src --out-dir dist",
         "lint": "eslint --fix dist",
-        "compile": "run-s mocha flow babel lint",
-        "prepublish": "npm run compile",
-        "versionUp": "node ./script/version_up",
-        "add": "git add .",
-        "commit": "git commit -F ./commitMessage.txt",
-        "push": "git push origin master",
-        "github": "run-s add commit push",
-        "postpublish": "npm run github"
+        "compile": "run-s test flow babel lint"
     },
     "nyc": {
         "require": [
