@@ -5,7 +5,9 @@ after_success:
 - npm run coverage
 deploy:
   provider: npm
+
   api_key:
+    email: toxictoxer@gmail.com
     secure: Z7Jx3HawulSEUj9oVEyw2T9tO8gNGk4HLmzrS52/f8m6aiRQnCzIBwVDaCqg5NzMV5UxJWrTAhpQkZuq7bAaK9ldRyZHr1O2X2kkuM5xgRky7bnpgXUJH4cfcnrixF7NcSxOYgyXIZSE5djymWaS8HuyGNHULPmHemGkpJQ7/sKDOwNSyJU/uo26QCW1DqjstJh17UHjumsqx6KxUBJX8IH4EQykHOZPeVqxw8f4DTyc73rg/nMuIHyGCriiJrBrS264+oODKItDmw+xtrFdpe39d9noL7OyO+C8xdbA5pT8IcbWGH0Ejp7EWE4PYZyrzIZGZXQKXQGwRvgDz4OE0CzZj0oyjTb74ItpBix9SZ7j0hu5LPQQBPQT19p/5A/VjHbPD+c3BZiY9VJMYGezBdjfKDK0YRa6m0m6k1a/ErZ+dHlz0S1x6tDEq+zYs0feDFcj1uL4ugyPRtJuqiQRf7Rxh3KbNvGfwwO4VYPl9TSt0VOd00vLa+D46LJMRyIS+8arwJ8+BDWBXiMUmZVuwjI6aILi+jONuwJ9+STnyOmgA/lThXTiyPMleJkQ/ld4JjGFqNsttQkKaGWF8x5ZuQ2EFGRq6+ES/ACRHR2TrDlYgbOx2EyyRgtTZXMoXhu/RwdAv17zxuH5gbhUiY3Fn6+UfPK+SNGBXUzQFm0Ns1E=
   skip_cleanup: true
   on:
