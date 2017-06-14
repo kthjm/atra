@@ -1,6 +1,8 @@
 # atra
+[![npm version](https://img.shields.io/npm/v/atra.svg)](https://www.npmjs.com/package/atra)
 [![Build Status](https://travis-ci.org/kthjm/atra.svg?branch=master)](https://travis-ci.org/kthjm/atra)
 [![Coverage Status](https://coveralls.io/repos/github/kthjm/atra/badge.svg?branch=master)](https://coveralls.io/github/kthjm/atra?branch=master)
+[![Code Climate](https://codeclimate.com/github/kthjm/atra/badges/gpa.svg)](https://codeclimate.com/github/kthjm/atra)
 
 **atra works for attributes in JSX.**
 
