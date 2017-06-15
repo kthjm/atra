@@ -1,7 +1,7 @@
 {
     "name": "atra",
     "version": "0.0.6",
-    "description": "",
+    "description": "atra works for attributes in JSX.",
     "main": "dist/index.js",
     "scripts": {
         "test": "cross-env NODE_ENV=test nyc mocha test/atra.js",
