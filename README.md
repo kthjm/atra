@@ -6,6 +6,24 @@
 
 **atra works for attributes in JSX.**
 
+```sh
+npm install --save atra
+```
+```sh
+yarn add atra
+```
+```javascript
+const atra = Atra({
+    name: {} | ()=>{}
+});
+<div {...atra(name,arg)} />
+```
+`name` is string for key.
+
+`arg` is optional.
+
+if `(!arg && typeof arg !== "number")` return your value as `style`. else return your value as `attribute`.
+
 ```javascript
 import React from "react";
 import Atra from "atra";

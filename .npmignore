@@ -1,10 +1,8 @@
 node_modules/
 src/
-script/
 test/
 .nyc_output/
 coverage/
-commitMessage.txt
 .babelrc
 .eslintrc
 .flowconfig
