@@ -2,15 +2,16 @@
     "name": "atra",
     "version": "0.0.6",
     "description": "",
-    "main": "index.js",
+    "main": "dist/index.js",
     "scripts": {
         "test": "cross-env NODE_ENV=test nyc mocha test/atra.js",
         "coverage": "nyc report --reporter=text-lcov | coveralls",
-        "testwatch": "mocha -w",
+        "watch": "mocha -w",
+        "mocha": "mocha",
         "flow": "flow status",
-        "babel": "babel src --out-dir dist",
+        "babel": "babel src --no-babelrc --presets es2015,flow,power-assert --plugins add-module-exports --out-dir dist",
         "lint": "eslint --fix dist",
-        "compile": "run-s test flow babel lint"
+        "compile": "run-s mocha flow babel lint"
     },
     "nyc": {
         "require": [
