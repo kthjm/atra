@@ -1,6 +1,6 @@
 {
     "name": "atra",
-    "version": "0.0.6",
+    "version": "0.0.7",
     "description": "atra works for attributes in JSX.",
     "main": "dist/atra.js",
     "scripts": {
