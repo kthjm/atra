@@ -11,7 +11,8 @@
         "flow": "flow status",
         "babel": "babel src --no-babelrc --presets es2015,flow,power-assert --plugins add-module-exports --out-dir dist",
         "lint": "eslint --fix dist",
-        "compile": "run-s mocha flow babel lint"
+        "compile": "run-s mocha flow babel lint",
+        "changelog": "conventional-changelog"
     },
     "nyc": {
         "require": [
@@ -42,6 +43,7 @@
         "babel-preset-power-assert": "^1.0.0",
         "babel-register": "^6.24.1",
         "babel-runtime": "^6.23.0",
+        "conventional-changelog-cli": "^1.3.1",
         "coveralls": "^2.13.1",
         "cross-env": "^5.0.1",
         "eslint": "^3.17.1",
