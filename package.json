@@ -1,12 +1,12 @@
 {
   "name": "atra",
-  "version": "0.0.7",
+  "version": "1.0.0",
   "author": "kthjm <toxictoxer@gmail.com>",
   "repository": "kthjm/atra",
   "license": "MIT",
-  "description": "atra works for attributes in JSX.",
+  "description": "Deal with attribute separately by immutable / mutable in Component.",
   "keywords": [],
-  "main": "dist/index.js",
+  "main": "lib/index.js",
   "prettier": {
     "tabWidth": 2,
     "semi": false,
@@ -25,6 +25,7 @@
               "debug": true
             }
           ],
+          "flow",
           "power-assert"
         ],
         "plugins": ["istanbul"]
@@ -41,8 +42,7 @@
             }
           ],
           "flow"
-        ],
-        "plugins": ["array-includes"]
+        ]
       }
     }
   },
@@ -53,27 +53,23 @@
     "instrument": false
   },
   "scripts": {
-    "flow": "flow",
-    "nycha": "nyc mocha -t 10000",
-    "test": "cross-env NODE_ENV=test run-s flow nycha",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "copy": "flow-copy-source ./src ./lib",
-    "format": "prettier --write **/*.js package.json",
-    "prebuild": "yarn format",
+    "pretest": "flow",
+    "test": "cross-env NODE_ENV=test nyc mocha -t 10000",
     "build": "cross-env NODE_ENV=build babel ./src -d ./lib",
-    "postbuild": "run-s copy format",
-    "node": "node --require babel-register"
+    "postbuild": "run-s format copy",
+    "format": "prettier --write **/*.js package.json",
+    "copy": "flow-copy-source --verbose ./src ./lib"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-plugin-array-includes": "^2.0.3",
     "babel-plugin-istanbul": "^4.1.5",
     "babel-preset-env": "^1.6.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-power-assert": "^1.0.0",
     "coveralls": "^3.0.0",
     "cross-env": "^5.0.5",
-    "flow-bin": "^0.57.2",
+    "flow-bin": "^0.57.3",
     "flow-copy-source": "^1.2.1",
     "mocha": "^4.0.1",
     "npm-run-all": "^4.1.1",
