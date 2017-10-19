@@ -1,10 +1,6 @@
-node_modules/
 src/
 test/
-.nyc_output/
-coverage/
-.babelrc
-.eslintrc
 .flowconfig
 .gitignore
 .travis.yml
+yarn.lock
