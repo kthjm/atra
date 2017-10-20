@@ -1,11 +1,11 @@
 {
   "name": "atra",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "author": "kthjm <toxictoxer@gmail.com>",
   "repository": "kthjm/atra",
   "license": "MIT",
   "description": "Deal with attribute separately by immutable / mutable in Component.",
-  "keywords": [],
+  "keywords": ["react", "attribute", "style", "jsx"],
   "main": "lib/index.js",
   "prettier": {
     "tabWidth": 2,
