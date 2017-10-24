@@ -5,7 +5,12 @@
   "repository": "kthjm/atra",
   "license": "MIT",
   "description": "Deal with attribute separately by immutable / mutable in Component.",
-  "keywords": ["react", "attribute", "style", "jsx"],
+  "keywords": [
+    "react",
+    "attribute",
+    "style",
+    "jsx"
+  ],
   "main": "lib/index.js",
   "prettier": {
     "tabWidth": 2,
@@ -20,7 +25,9 @@
             "env",
             {
               "targets": {
-                "browsers": ["last 2 Chrome versions"]
+                "browsers": [
+                  "last 2 Chrome versions"
+                ]
               },
               "debug": true
             }
@@ -28,7 +35,9 @@
           "flow",
           "power-assert"
         ],
-        "plugins": ["istanbul"]
+        "plugins": [
+          "istanbul"
+        ]
       },
       "build": {
         "presets": [
@@ -36,7 +45,10 @@
             "env",
             {
               "targets": {
-                "browsers": ["last 2 versions", "safari >= 7"]
+                "browsers": [
+                  "last 2 versions",
+                  "safari >= 7"
+                ]
               },
               "debug": true
             }
@@ -47,8 +59,12 @@
     }
   },
   "nyc": {
-    "require": ["babel-register"],
-    "include": ["src"],
+    "require": [
+      "babel-register"
+    ],
+    "include": [
+      "src"
+    ],
     "sourceMap": false,
     "instrument": false
   },
@@ -76,5 +92,8 @@
     "nyc": "^11.2.1",
     "power-assert": "^1.4.4",
     "prettier": "^1.7.4"
+  },
+  "dependencies": {
+    "inline-style-prefixer": "^3.0.8"
   }
 }
