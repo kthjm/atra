@@ -1,16 +1,12 @@
 {
   "name": "atra",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "kthjm <toxictoxer@gmail.com>",
   "repository": "kthjm/atra",
   "license": "MIT",
-  "description": "Deal with attribute separately by immutable / mutable in Component.",
-  "keywords": [
-    "react",
-    "attribute",
-    "style",
-    "jsx"
-  ],
+  "description":
+    "Deal with attribute separately by immutable / mutable in Component.",
+  "keywords": ["react", "attribute", "style", "jsx"],
   "main": "lib/index.js",
   "prettier": {
     "tabWidth": 2,
@@ -18,53 +14,28 @@
     "singleQuote": true
   },
   "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "targets": {
+            "browsers": ["last 2 versions", "safari >= 7"]
+          },
+          "debug": true
+        }
+      ],
+      "flow"
+    ],
     "env": {
       "test": {
-        "presets": [
-          [
-            "env",
-            {
-              "targets": {
-                "browsers": [
-                  "last 2 Chrome versions"
-                ]
-              },
-              "debug": true
-            }
-          ],
-          "flow",
-          "power-assert"
-        ],
-        "plugins": [
-          "istanbul"
-        ]
-      },
-      "build": {
-        "presets": [
-          [
-            "env",
-            {
-              "targets": {
-                "browsers": [
-                  "last 2 versions",
-                  "safari >= 7"
-                ]
-              },
-              "debug": true
-            }
-          ],
-          "flow"
-        ]
+        "presets": ["power-assert"],
+        "plugins": ["istanbul"]
       }
     }
   },
   "nyc": {
-    "require": [
-      "babel-register"
-    ],
-    "include": [
-      "src"
-    ],
+    "require": ["babel-register"],
+    "include": ["src"],
     "sourceMap": false,
     "instrument": false
   },
@@ -72,6 +43,7 @@
     "coverage": "nyc report --reporter=text-lcov | coveralls",
     "pretest": "flow",
     "test": "cross-env NODE_ENV=test nyc mocha -t 10000",
+    "prebuild": "yarn test",
     "build": "cross-env NODE_ENV=build babel ./src -d ./lib",
     "postbuild": "run-s format copy",
     "format": "prettier --write **/*.js package.json",
