@@ -5,6 +5,13 @@
 
 Deal with attribute separately by immutable / mutable in Component.
 
+[basic features](https://github.com/MicheleBertoli/css-in-js):
+
+| Automatic Vendor Prefixing | Pseudo Classes | Media Queries | Styles As Object Literals | Extract CSS File |
+|:--------------------------:|:--------------:|:-------------:|:-------------------------:|:----------------:|
+| ✓ | × | × | ✓ | × |
+
+
 ## Installation
 ```shell
 yarn add atra

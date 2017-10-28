@@ -57,13 +57,18 @@ describe(`with mutable`, () => {
   it(`value assigned because attrName in clone && isObject(clone[attrName]) && isObject(mutable[attrName])`, () => {
     const mutable = { attribute2: { property4: null } }
 
-    const expectAttribute2 = assign(
-      {},
-      immutableValue.attribute2,
-      mutable.attribute2
-    )
-    const expect = assign({}, immutableValue, { attribute2: expectAttribute2 })
+    const snapshotAttr2 = assign({}, immutableValue.attribute2)
+    const expectAttr2 = assign({}, snapshotAttr2, mutable.attribute2)
+    const expect = assign({}, immutableValue, { attribute2: expectAttr2 })
+
     const result = atra(immutableName, mutable)
+
     assert.deepEqual(result, expect)
+
+    /**
+     * assign(clone[attrName], mutable[attrName])
+     * => assign({}, clone[attrName], mutable[attrName])
+     */
+    assert.deepEqual(immutableValue.attribute2, snapshotAttr2)
   })
 })

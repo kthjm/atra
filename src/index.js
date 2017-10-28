@@ -1,4 +1,6 @@
 // @flow
+import prefixAll from 'inline-style-prefixer/static'
+
 type AttributeName = string
 type AttributeValue = any
 type Attributes = { [attrName: AttributeName]: AttributeValue }
@@ -11,34 +13,48 @@ type Immutables = { [name: AtraName]: Immutable }
 type AtraWrap = (immutables: Immutables) => AtraExec
 type AtraExec = (name: AtraName, mutable: Mutable) => Attributes
 
-const { assign, values, keys } = Object
+const { assign, keys } = Object
 const { isArray } = Array
 const isObject = (target: any): boolean => typeof target === 'object'
 
+const prefixInitiation = attributes => {
+  if (isObject(attributes['style'])) {
+    attributes['style'] = prefixAll(attributes['style'])
+  }
+  return attributes
+}
+
 const Atra: AtraWrap = immutables => {
   throwIfNotPureObj('immutables', immutables)
-  values(immutables).forEach(immutable =>
-    throwIfNotPureObj('immutable', immutable)
-  )
+
+  keys(immutables).forEach((key: string) => {
+    throwIfNotPureObj('immutable', immutables[key])
+    immutables[key] = prefixInitiation(immutables[key])
+  })
 
   const atra: AtraExec = (name, mutable) => {
     if (typeof name !== 'string') {
       throw new TypeError(`first argument must be string`)
     }
 
+    let attributes
+
     if (!mutable) {
-      return immutables[name] || {}
+      attributes = immutables[name] || {}
+    } else {
+      throwIfNotPureObj('mutable', mutable)
+
+      const clone = assign({}, immutables[name])
+      mutable = prefixInitiation(mutable)
+      keys(mutable).forEach(attrName => {
+        clone[attrName] = shouldAssign(attrName, clone, mutable)
+          ? assign({}, clone[attrName], mutable[attrName])
+          : mutable[attrName]
+      })
+      attributes = clone
     }
 
-    throwIfNotPureObj('mutable', mutable)
-
-    const clone = assign({}, immutables[name])
-    keys(mutable).forEach(attrName => {
-      clone[attrName] = shouldAssign(attrName, clone, mutable)
-        ? assign(clone[attrName], mutable[attrName])
-        : mutable[attrName]
-    })
-    return clone
+    return attributes
   }
 
   return atra
