@@ -1,6 +1,6 @@
 {
   "name": "atra",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "kthjm <toxictoxer@gmail.com>",
   "repository": "kthjm/atra",
   "license": "MIT",
@@ -40,7 +40,9 @@
     "instrument": false
   },
   "scripts": {
-    "coverage": "nyc report --reporter=text-lcov | coveralls",
+    "report": "nyc report --reporter=lcov",
+    "codecov": "codecov",
+    "coverage": "run-s report codecov",
     "pretest": "flow",
     "test": "cross-env NODE_ENV=test nyc mocha -t 10000",
     "prebuild": "yarn test",
@@ -55,7 +57,7 @@
     "babel-preset-env": "^1.6.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-power-assert": "^1.0.0",
-    "coveralls": "^3.0.0",
+    "codecov": "^3.0.0",
     "cross-env": "^5.0.5",
     "flow-bin": "^0.57.3",
     "flow-copy-source": "^1.2.1",
