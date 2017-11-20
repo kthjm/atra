@@ -1,7 +1,9 @@
 # atra
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![npm](https://img.shields.io/npm/v/atra.svg?style=flat-square)](https://www.npmjs.com/package/atra)
+[![npm](https://img.shields.io/npm/dm/atra.svg?style=flat-square)](https://www.npmjs.com/package/atra)
 [![Build Status](https://img.shields.io/travis/kthjm/atra.svg?style=flat-square)](https://travis-ci.org/kthjm/atra)
 [![Codecov](https://img.shields.io/codecov/c/github/kthjm/atra.svg?style=flat-square)](https://codecov.io/gh/kthjm/atra)
+[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 Deal with attribute separately by immutable / mutable in Component.
 
