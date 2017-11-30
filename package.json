@@ -1,38 +1,14 @@
 {
   "name": "atra",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "author": "kthjm <toxictoxer@gmail.com>",
   "repository": "kthjm/atra",
   "license": "MIT",
-  "description":
-    "Deal with attribute separately by immutable / mutable in Component.",
+  "description": "separate attribute by immutable / mutable in render.",
   "keywords": ["react", "attribute", "style", "jsx"],
-  "main": "lib/index.js",
-  "prettier": {
-    "tabWidth": 2,
-    "semi": false,
-    "singleQuote": true
-  },
-  "babel": {
-    "presets": [
-      [
-        "env",
-        {
-          "targets": {
-            "browsers": ["last 2 versions", "safari >= 7"]
-          },
-          "debug": true
-        }
-      ],
-      "flow"
-    ],
-    "env": {
-      "test": {
-        "presets": ["power-assert"],
-        "plugins": ["istanbul"]
-      }
-    }
-  },
+  "main": "dist/atra.cjs.js",
+  "jsnext:main": "dist/atra.es.js",
+  "module": "dist/atra.es.js",
   "nyc": {
     "require": ["babel-register"],
     "include": ["src"],
@@ -40,21 +16,28 @@
     "instrument": false
   },
   "scripts": {
+    "pretest": "flow",
+    "test": "cross-env NODE_ENV=TEST nyc mocha",
+    "prebuild": "yarn test",
+    "build": "cross-env NODE_ENV=BUILD node rollup.config.all.js",
+    "postbuild": "run-s process format copy",
+    "process:cjs": "node dist/atra.cjs.js",
+    "process:min": "node dist/atra.min.js",
+    "process": "run-p process:cjs process:min",
+    "format": "prettier --write **/*.js package.json",
+    "copy": "flow-copy-source --verbose src dist",
     "report": "nyc report --reporter=lcov",
     "codecov": "codecov",
-    "coverage": "run-s report codecov",
-    "pretest": "flow",
-    "test": "cross-env NODE_ENV=test nyc mocha -t 10000",
-    "prebuild": "yarn test",
-    "build": "cross-env NODE_ENV=build babel ./src -d ./lib",
-    "postbuild": "run-s format copy",
-    "format": "prettier --write **/*.js package.json",
-    "copy": "flow-copy-source --verbose ./src ./lib"
+    "coverage": "run-s report codecov"
+  },
+  "dependencies": {
+    "inline-style-prefixer": "^3.0.8"
   },
   "devDependencies": {
-    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
     "babel-plugin-istanbul": "^4.1.5",
     "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-power-assert": "^1.0.0",
     "codecov": "^3.0.0",
@@ -65,9 +48,18 @@
     "npm-run-all": "^4.1.1",
     "nyc": "^11.2.1",
     "power-assert": "^1.4.4",
-    "prettier": "^1.7.4"
+    "prettier": "^1.7.4",
+    "rollup": "^0.52.0",
+    "rollup-plugin-babel": "^3.0.2",
+    "rollup-plugin-commonjs": "^8.2.6",
+    "rollup-plugin-flow": "^1.1.1",
+    "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-uglify": "^2.0.1",
+    "uglify-es": "^3.2.0"
   },
-  "dependencies": {
-    "inline-style-prefixer": "^3.0.8"
+  "prettier": {
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
   }
 }
