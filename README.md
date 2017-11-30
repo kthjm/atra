@@ -3,9 +3,9 @@
 [![npm](https://img.shields.io/npm/dm/atra.svg?style=flat-square)](https://www.npmjs.com/package/atra)
 [![Build Status](https://img.shields.io/travis/kthjm/atra.svg?style=flat-square)](https://travis-ci.org/kthjm/atra)
 [![Codecov](https://img.shields.io/codecov/c/github/kthjm/atra.svg?style=flat-square)](https://codecov.io/gh/kthjm/atra)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+[![cdn](https://img.shields.io/badge/jsdelivr-latest-e84d3c.svg?style=flat-square)](https://cdn.jsdelivr.net/npm/atra/dist/atra.min.js)
 
-Deal with attribute separately by immutable / mutable in Component.
+separate attribute by immutable / mutable in render.
 
 [basic features](https://github.com/MicheleBertoli/css-in-js):
 

@@ -1,8 +1,10 @@
 'use strict'
 
-Object.defineProperty(exports, '__esModule', {
-  value: true
-})
+function _interopDefault(ex) {
+  return ex && typeof ex === 'object' && 'default' in ex ? ex['default'] : ex
+}
+
+var prefixAll = _interopDefault(require('inline-style-prefixer/static'))
 
 var _typeof =
   typeof Symbol === 'function' && typeof Symbol.iterator === 'symbol'
@@ -18,16 +20,9 @@ var _typeof =
           : typeof obj
       }
 
-var _static = require('inline-style-prefixer/static')
-
-var _static2 = _interopRequireDefault(_static)
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj }
-}
-
-var assign = Object.assign,
-  keys = Object.keys
+//
+var assign = Object.assign
+var keys = Object.keys
 var isArray = Array.isArray
 
 var isObject = function isObject(target) {
@@ -38,7 +33,7 @@ var isObject = function isObject(target) {
 
 var prefixInitiation = function prefixInitiation(attributes) {
   if (isObject(attributes['style'])) {
-    attributes['style'] = (0, _static2.default)(attributes['style'])
+    attributes['style'] = prefixAll(attributes['style'])
   }
   return attributes
 }
@@ -93,4 +88,4 @@ var shouldAssign = function shouldAssign(attrName, clone, mutable) {
   )
 }
 
-exports.default = Atra
+module.exports = Atra
