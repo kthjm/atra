@@ -1,17 +1,21 @@
 {
   "name": "atra",
-  "version": "1.1.2",
+  "version": "1.2.0",
   "author": "kthjm <toxictoxer@gmail.com>",
   "repository": "kthjm/atra",
   "license": "MIT",
   "description": "separate attribute by immutable / mutable in render.",
   "keywords": ["react", "attribute", "style", "jsx"],
-  "main": "dist/atra.cjs.js",
-  "jsnext:main": "dist/atra.es.js",
-  "module": "dist/atra.es.js",
+  "main": "dist/cjs.js",
+  "jsnext:main": "dist/es.js",
+  "module": "dist/es.js",
+  "prettier": {
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
+  },
   "nyc": {
     "require": ["babel-register"],
-    "include": ["src"],
     "sourceMap": false,
     "instrument": false
   },
@@ -20,12 +24,11 @@
     "test": "cross-env NODE_ENV=TEST nyc mocha",
     "prebuild": "yarn test",
     "build": "cross-env NODE_ENV=BUILD node rollup.config.all.js",
-    "postbuild": "run-s process format copy",
-    "process:cjs": "node dist/atra.cjs.js",
-    "process:min": "node dist/atra.min.js",
+    "process:cjs": "node dist/cjs.js",
+    "process:min": "node dist/min.js",
     "process": "run-p process:cjs process:min",
     "format": "prettier --write **/*.js package.json",
-    "copy": "flow-copy-source --verbose src dist",
+    "postbuild": "run-s process format",
     "coverage": "nyc report --reporter=lcov && codecov"
   },
   "dependencies": {
@@ -41,7 +44,7 @@
     "codecov": "^3.0.0",
     "cross-env": "^5.0.5",
     "flow-bin": "^0.57.3",
-    "flow-copy-source": "^1.2.1",
+    "flow-typed": "^2.3.0",
     "mocha": "^4.0.1",
     "npm-run-all": "^4.1.1",
     "nyc": "^11.2.1",
@@ -54,10 +57,5 @@
     "rollup-plugin-node-resolve": "^3.0.0",
     "rollup-plugin-uglify": "^2.0.1",
     "uglify-es": "^3.2.0"
-  },
-  "prettier": {
-    "tabWidth": 2,
-    "semi": false,
-    "singleQuote": true
   }
 }

@@ -1,9 +1,9 @@
-src/
 test/
 .babelrc
 .flowconfig
 .gitignore
 .prettierignore
 .travis.yml
+index.js
 rollup.config.all.js
 yarn.lock

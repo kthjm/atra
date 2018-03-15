@@ -1,1 +1,3 @@
-dist/atra.min.js
+dist/min.js
+flow-typed/
+index.js
