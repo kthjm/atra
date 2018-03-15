@@ -5,6 +5,7 @@ test/
 .gitignore
 .prettierignore
 .travis.yml
+codecov.yml
 index.js
 rollup.config.all.js
 yarn.lock
