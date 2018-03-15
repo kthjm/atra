@@ -1,3 +1,4 @@
+flow-typed/
 test/
 .babelrc
 .flowconfig
