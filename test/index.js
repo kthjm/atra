@@ -1,5 +1,5 @@
 import assert from 'power-assert'
-import Atra from '../src'
+import Atra from '../index.js'
 
 const immutableName = 'name'
 const immutableValue = {

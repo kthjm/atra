@@ -3,7 +3,7 @@
 [![npm](https://img.shields.io/npm/dm/atra.svg?style=flat-square)](https://www.npmjs.com/package/atra)
 [![Build Status](https://img.shields.io/travis/kthjm/atra.svg?style=flat-square)](https://travis-ci.org/kthjm/atra)
 [![Codecov](https://img.shields.io/codecov/c/github/kthjm/atra.svg?style=flat-square)](https://codecov.io/gh/kthjm/atra)
-[![cdn](https://img.shields.io/badge/jsdelivr-latest-e84d3c.svg?style=flat-square)](https://cdn.jsdelivr.net/npm/atra/dist/atra.min.js)
+[![cdn](https://img.shields.io/badge/jsdelivr-latest-e84d3c.svg?style=flat-square)](https://cdn.jsdelivr.net/npm/atra/dist/min.js)
 
 separate attribute by immutable / mutable in render.
 
@@ -24,11 +24,11 @@ import React from 'react'
 import Atra from 'atra'
 
 export default (props) => (
-  <div {...atra(`div`, { className: props.foo ? "hoge" : "" })}>
-    <span {...atra(`span1`)} />
-    <span {...atra(`span2`, {
+  <div {...atra('div', { className: props.foo ? 'hoge' : '' })}>
+    <span {...atra('span1')} />
+    <span {...atra('span2', {
       style: {
-        transition: props.bar && "1s",
+        transition: props.bar && '1s',
         opacity: props.bar ? 1 : 0
       }
     })} />
@@ -37,20 +37,20 @@ export default (props) => (
 
 const atra = Atra({
   div: {
-    id: "semantic",
+    id: 'semantic',
     style: {
-      position: "relative"
+      position: 'relative'
     }
   },
   span1: {
-    className: "fuga",
+    className: 'fuga',
     style: {
-      color: "#483738"
+      color: '#483738'
     }
   },
   span2: {
     style: {
-      color: "#482716",
+      color: '#482716',
       opacity: 0.5 // <= ignore
     }
   }
@@ -58,10 +58,12 @@ const atra = Atra({
 ```
 
 ## API
-#### `Atra({ [name]: immutable })`
+#### `Atra({ [name]: immutable }[, prefixerConfig])`
 #### `atra(name[, mutable])`
 
 `immutable`, `mutable` is used as attribute object.
+
+`prefixerConfig` is [inline-style-prefixer's.](https://github.com/rofrischmann/inline-style-prefixer/blob/master/docs/api/inline-style-prefixer/Prefixer.md#configuration)
 
 ## License
 MIT (http://opensource.org/licenses/MIT)

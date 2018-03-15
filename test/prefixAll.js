@@ -1,34 +1,30 @@
 import assert from 'power-assert'
-import Atra from '../src'
-
-const styleIn = {
-  animation: '3s ease-in 1s 2 reverse both paused slidein',
-  transition: '200ms all linear',
-  boxSizing: 'border-box',
-  display: 'flex',
-  color: 'blue'
-}
-
-const styleOut = {
-  animation: '3s ease-in 1s 2 reverse both paused slidein',
-  WebkitAnimation: '3s ease-in 1s 2 reverse both paused slidein',
-  transition: '200ms all linear',
-  WebkitTransition: '200ms all linear',
-  MozTransition: '200ms all linear',
-  boxSizing: 'border-box',
-  display: ['-webkit-box', '-moz-box', '-ms-flexbox', '-webkit-flex', 'flex'],
-  color: 'blue'
-}
+import Atra from '../index.js'
 
 describe(`prefixAll`, () => {
+  const userAgent =
+    'Mozilla/5.0 (iPhone; CPU iPhone OS 11_0 like Mac OS X) AppleWebKit/604.1.38 (KHTML, like Gecko) Version/11.0 Mobile/15A372 Safari/604.1'
+
+  const createStyleIn = () => ({
+    display: 'flex',
+    userSelect: 'none'
+  })
+
+  const createStyleOut = () => ({
+    display: 'flex',
+    WebkitUserSelect: 'none'
+  })
+
   it(`on immutable`, () => {
-    const atra = Atra({ NAME: { style: styleIn } })
-    assert.deepEqual(styleIn, styleOut)
+    const style = createStyleIn()
+    const atra = Atra({ NAME: { style } }, { userAgent })
+    assert.deepEqual(style, createStyleOut())
   })
 
   it(`on mutable`, () => {
-    const atra = Atra({})
-    const result = atra('', { style: styleIn })
-    assert.deepEqual(result.style, styleOut)
+    const { style } = Atra({}, { userAgent })('NAME', {
+      style: createStyleIn()
+    })
+    assert.deepEqual(style, createStyleOut())
   })
 })
