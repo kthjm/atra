@@ -24,7 +24,7 @@ const asserts = (condition, message, isType) => {
 }
 
 const Atra: AtraWrap = (immutables, config) => {
-  
+
   asserts(immutables && isObject(immutables), 'Atra immutables must be pure object')
 
   const prefixer = isObject(config) ? new Prefixer(config) : commonPrefixer
@@ -42,7 +42,10 @@ const Atra: AtraWrap = (immutables, config) => {
       return immutables[name] || {}
     } else {
       asserts(isObject(mutable), 'Atra mutable must be pure object')
-      mutable.style = prefixingStyle(mutable.style, prefixer)
+
+      if ('style' in mutable) {
+        mutable.style = prefixingStyle(mutable.style, prefixer)
+      }
 
       const result = assign({}, immutables[name])
 

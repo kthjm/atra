@@ -64,7 +64,10 @@ var Atra = function Atra(immutables, config) {
       return immutables[name] || {}
     } else {
       asserts(isObject(mutable), 'Atra mutable must be pure object')
-      mutable.style = prefixingStyle(mutable.style, prefixer)
+
+      if ('style' in mutable) {
+        mutable.style = prefixingStyle(mutable.style, prefixer)
+      }
 
       var result = assign({}, immutables[name])
 
