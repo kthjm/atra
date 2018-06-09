@@ -29,10 +29,6 @@ var isObject = function isObject(target) {
   )
 }
 
-var prefixingStyle = function prefixingStyle(style, prefixer) {
-  return isObject(style) ? prefixer.prefix(style) : style
-}
-
 var asserts = function asserts(condition, message, isType) {
   if (!condition) {
     throw isType ? new TypeError(message) : new Error(message)
@@ -49,8 +45,12 @@ var Atra = function Atra(immutables, config) {
 
   keys(immutables).forEach(function(key) {
     var immutable = immutables[key]
+
     asserts(isObject(immutable), 'Atra immutable must be pure object')
-    immutable.style = prefixingStyle(immutable.style, prefixer)
+
+    if (isObject(immutable.style)) {
+      immutable.style = prefixer.prefix(immutable.style)
+    }
   })
 
   var atra = function atra(name, mutable) {
@@ -60,25 +60,23 @@ var Atra = function Atra(immutables, config) {
       true
     )
 
-    if (!mutable) {
-      return immutables[name] || {}
-    } else {
-      asserts(isObject(mutable), 'Atra mutable must be pure object')
+    if (!mutable) return immutables[name] || {}
 
-      if ('style' in mutable) {
-        mutable.style = prefixingStyle(mutable.style, prefixer)
-      }
+    asserts(isObject(mutable), 'Atra mutable must be pure object')
 
-      var result = assign({}, immutables[name])
+    var result = assign({}, immutables[name])
 
-      keys(mutable).forEach(function(attrName) {
-        return (result[attrName] = shouldAssign(attrName, result, mutable)
-          ? assign({}, result[attrName], mutable[attrName])
-          : mutable[attrName])
-      })
-
-      return result
+    if (isObject(mutable.style)) {
+      mutable = assign({}, mutable, { style: prefixer.prefix(mutable.style) })
     }
+
+    keys(mutable).forEach(function(attrName) {
+      return (result[attrName] = shouldAssign(attrName, result, mutable)
+        ? assign({}, result[attrName], mutable[attrName])
+        : mutable[attrName])
+    })
+
+    return result
   }
 
   return atra
@@ -87,8 +85,7 @@ var Atra = function Atra(immutables, config) {
 var shouldAssign = function shouldAssign(attrName, result, mutable) {
   return (
     attrName in result &&
-    isObject(result[attrName]) &&
-    isObject(mutable[attrName])
+    (isObject(result[attrName]) || isObject(mutable[attrName]))
   )
 }
 
