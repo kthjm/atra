@@ -1,11 +1,18 @@
 {
   "env": {
     "BUILD": {
-      "presets": ["es2015-rollup"]
+      "presets": [
+        ["env", {
+          "modules": false,
+          "targets": { "browsers": ["last 2 versions", "safari >= 7"] }
+        }]
+      ]
     },
     "TEST": {
       "presets": [
-        ["env", { "targets": { "browsers": ["last 2 versions", "safari >= 7"] } }],
+        ["env", {
+          "targets": { "browsers": ["last 2 versions", "safari >= 7"] }
+        }],
         "flow",
         "power-assert"
       ],

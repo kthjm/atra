@@ -46,14 +46,6 @@ describe(`with mutable`, () => {
     assert.deepEqual(result, expect)
   })
 
-  it(`value not assign because !isObject(mutable[attrName])`, () => {
-    const mutable = { attribute2: 'value' }
-
-    const expect = assign({}, immutableValue, mutable)
-    const result = atra(immutableName, mutable)
-    assert.deepEqual(result, expect)
-  })
-
   it(`value assigned because attrName in clone && isObject(clone[attrName]) && isObject(mutable[attrName])`, () => {
     const mutable = { attribute2: { property4: null } }
 

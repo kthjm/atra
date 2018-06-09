@@ -1,34 +1,31 @@
 {
   "name": "atra",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "author": "kthjm <toxictoxer@gmail.com>",
   "repository": "kthjm/atra",
   "license": "MIT",
   "description": "separate attribute by immutable / mutable in render.",
-  "keywords": ["react", "attribute", "style", "jsx"],
+  "keywords": [
+    "react",
+    "attribute",
+    "style",
+    "jsx"
+  ],
   "main": "dist/cjs.js",
   "jsnext:main": "dist/es.js",
   "module": "dist/es.js",
-  "prettier": {
-    "tabWidth": 2,
-    "semi": false,
-    "singleQuote": true
-  },
   "nyc": {
-    "require": ["babel-register"],
+    "require": [
+      "babel-register"
+    ],
     "sourceMap": false,
     "instrument": false
   },
   "scripts": {
     "pretest": "flow",
-    "test": "cross-env NODE_ENV=TEST nyc mocha",
+    "test": "cross-env BABEL_ENV=TEST nyc mocha",
     "prebuild": "yarn test",
-    "build": "cross-env NODE_ENV=BUILD node rollup.config.all.js",
-    "process:cjs": "node dist/cjs.js",
-    "process:min": "node dist/min.js",
-    "process": "run-p process:cjs process:min",
-    "format": "prettier --write **/*.js package.json",
-    "postbuild": "run-s process format",
+    "build": "cross-env BABEL_ENV=BUILD rollup -c",
     "coverage": "nyc report --reporter=lcov && codecov"
   },
   "dependencies": {
@@ -38,7 +35,6 @@
     "babel-core": "^6.26.0",
     "babel-plugin-istanbul": "^4.1.5",
     "babel-preset-env": "^1.6.0",
-    "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-flow": "^6.23.0",
     "babel-preset-power-assert": "^1.0.0",
     "codecov": "^3.0.0",
@@ -49,12 +45,13 @@
     "npm-run-all": "^4.1.1",
     "nyc": "^11.2.1",
     "power-assert": "^1.4.4",
-    "prettier": "^1.7.4",
     "rollup": "^0.52.0",
+    "rollup-plugin-auto-external": "^1.2.0",
     "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-flow": "^1.1.1",
     "rollup-plugin-node-resolve": "^3.0.0",
+    "rollup-plugin-prettier": "^0.4.0",
     "rollup-plugin-uglify": "^2.0.1",
     "uglify-es": "^3.2.0"
   }

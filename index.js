@@ -10,11 +10,6 @@ const isObject = (target: any): boolean =>
   !isArray(target) &&
   target !== null
 
-const prefixingStyle = (style, prefixer) =>
-  isObject(style)
-    ? prefixer.prefix(style)
-    : style
-
 const asserts = (condition, message, isType) => {
   if (!condition) {
     throw isType
@@ -29,34 +24,39 @@ const Atra: AtraWrap = (immutables, config) => {
 
   const prefixer = isObject(config) ? new Prefixer(config) : commonPrefixer
 
-  keys(immutables).forEach((key: string) => {
+  keys(immutables)
+  .forEach((key: string) => {
     const immutable = immutables[key]
+
     asserts(isObject(immutable), 'Atra immutable must be pure object')
-    immutable.style = prefixingStyle(immutable.style, prefixer)
+
+    if (isObject(immutable.style)) {
+      immutable.style = prefixer.prefix(immutable.style)
+    }
   })
 
   const atra: AtraExec = (name, mutable) => {
     asserts(typeof name === 'string', 'Atra first argument must be string', true)
 
-    if (!mutable) {
-      return immutables[name] || {}
-    } else {
-      asserts(isObject(mutable), 'Atra mutable must be pure object')
+    if (!mutable) return immutables[name] || {}
 
-      if ('style' in mutable) {
-        mutable.style = prefixingStyle(mutable.style, prefixer)
-      }
+    asserts(isObject(mutable), 'Atra mutable must be pure object')
 
-      const result = assign({}, immutables[name])
+    const result = assign({}, immutables[name])
 
-      keys(mutable).forEach(attrName =>
-        result[attrName] = shouldAssign(attrName, result, mutable)
-          ? assign({}, result[attrName], mutable[attrName])
-          : mutable[attrName]
-      )
-
-      return result
+    if (isObject(mutable.style)) {
+      mutable = assign({}, mutable, { style: prefixer.prefix(mutable.style) })
     }
+
+    keys(mutable)
+    .forEach(attrName =>
+      result[attrName] =
+      shouldAssign(attrName, result, mutable)
+        ? assign({}, result[attrName], mutable[attrName])
+        : mutable[attrName]
+    )
+
+    return result
   }
 
   return atra
@@ -68,8 +68,7 @@ const shouldAssign = (
   mutable: Attributes
 ): boolean =>
   attrName in result &&
-  isObject(result[attrName]) &&
-  isObject(mutable[attrName])
+  (isObject(result[attrName]) || isObject(mutable[attrName]))
 
 type AttributeName = string
 type AttributeValue = any
